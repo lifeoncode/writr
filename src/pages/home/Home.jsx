@@ -1,11 +1,12 @@
 import "./home.css";
 import Hero from "../../hero/Hero";
+import Posts from "../../posts/Posts";
 
 export default function Home() {
   return (
-    <div className="home">
+    <>
       <Hero />
-      <div className="container">HOME PAGE</div>
-    </div>
+      <Posts />
+    </>
   );
 }

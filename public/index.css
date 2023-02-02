@@ -9,7 +9,8 @@
 :root {
   --white: #fafafa;
   --black: #141414;
-  --dark-gray: #484848;
+  --dark-gray: #949292;
+  --light-gray: #f0f0f0;
 }
 
 .container {
@@ -19,4 +20,20 @@
 
 body {
   background-color: var(--white);
+  color: var(--black);
+}
+
+.heading {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+img {
+  width: 100%;
 }
