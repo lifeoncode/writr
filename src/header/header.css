@@ -6,3 +6,24 @@
   background-color: red;
   padding: 20px;
 }
+
+.header .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.header .container .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heaer .logo {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+.header .nav a {
+  font-family: "Playfair Display", serif;
+}
