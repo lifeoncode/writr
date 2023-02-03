@@ -1,0 +1,46 @@
+.single-post {
+  padding: 50px 0;
+}
+
+.single-post .cover-image {
+  height: 300px;
+  object-fit: cover;
+}
+
+.single-post .post-head {
+  padding: 20px 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-head .post-info {
+  color: var(--dark-gray);
+}
+
+.post-head .post-info .post-author {
+  font-size: 18px;
+}
+
+.post-head .post-info .post-time {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: block;
+  margin-top: 5px;
+}
+
+.post-content {
+  padding: 30px 150px;
+}
+
+.post-content .post-title {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.post-content p {
+  font-size: 18px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
