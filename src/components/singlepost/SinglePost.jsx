@@ -19,8 +19,8 @@ export default function SinglePost() {
           </div>
           {/* controls - edit - delete */}
           <div className="post-controls">
-            <button>edit</button>
-            <button>delete</button>
+            <i className="fa-regular fa-pen-to-square btn edit-post-btn"></i>
+            <i className="fa-solid fa-trash btn delete-post-btn"></i>
           </div>
         </div>
         {/* post content */}

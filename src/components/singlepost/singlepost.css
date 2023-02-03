@@ -30,6 +30,17 @@
   margin-top: 5px;
 }
 
+.post-head .post-controls .btn {
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.post-controls .edit-post-btn {
+  margin-right: 30px;
+}
+
 .post-content {
   padding: 30px 150px;
 }
