@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./register.css";
 
 export default function Register() {
@@ -18,7 +19,7 @@ export default function Register() {
           <button type="submit">sign up</button>
         </form>
         <span>
-          Already have an account? <a href="https://github.com">Login</a>
+          Already have an account? <Link to="/login">Login</Link>
         </span>
       </div>
     </div>
