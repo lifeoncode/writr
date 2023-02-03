@@ -4,7 +4,7 @@ export default function Login() {
   return (
     <div className="login">
       <div className="container">
-        <h2 className="heading">Login to Writr.</h2>
+        <h2 className="heading">Login to writr.</h2>
         {/* login form */}
         <form className="login-form">
           <input type="email" placeholder="Email" required />
