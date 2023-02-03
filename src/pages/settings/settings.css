@@ -1,0 +1,86 @@
+.settings {
+  padding: 50px 0;
+}
+
+.settings .container {
+  padding: 0 150px;
+}
+
+.settings .note {
+  padding: 15px;
+  background-color: var(--light-gray);
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+.settings .note i {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.settings .note .heading {
+  font-size: inherit;
+}
+
+.settings .profile-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.settings .profile-photo-label {
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 30px;
+  cursor: pointer;
+  text-transform: none;
+}
+
+.settings .profile-photo-label i {
+  margin-right: 10px;
+}
+
+.profile-form .form-group {
+  margin: 20px 0;
+}
+
+.profile-form label {
+  display: block;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.profile-form input {
+  width: 100%;
+  font-size: 16px;
+  color: #454545;
+  padding: 5px 0;
+  border: 0;
+  border-bottom: 1px solid var(--dark-gray);
+  outline: none;
+  background-color: transparent;
+}
+
+.profile-form {
+  margin-bottom: 50px;
+}
+
+.profile button {
+  background-color: blue;
+  display: block;
+  padding: 12px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  width: 100%;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.profile .delete-profile-btn {
+  background-color: orangered;
+}

@@ -1,0 +1,68 @@
+.write {
+  padding: 50px 0;
+}
+
+.write .container {
+  padding: 0 150px;
+  position: relative;
+}
+
+.write .write-image {
+  height: 300px;
+  object-fit: cover;
+}
+
+.write label {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--dark-gray);
+  cursor: pointer;
+}
+
+.write label i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.write .write-input {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+
+.write .write-input::placeholder {
+  color: var(--dark-gray);
+}
+
+.write #write-title {
+  font-size: 30px;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 40px 0 20px 0;
+}
+
+.write .write-content {
+  font-size: 16px;
+  line-height: 1.45;
+  opacity: 0.8;
+}
+
+.write .write-submit {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: blue;
+  color: var(--white);
+  border: 0;
+  cursor: pointer;
+}

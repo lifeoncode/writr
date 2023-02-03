@@ -9,11 +9,14 @@ export default function Header() {
           <a href="/write" className="heading">
             Write
           </a>
-          <a href="/account" className="heading">
-            Account
+          <a href="/" className="heading">
+            Feed
           </a>
           <a href="/support" className="heading">
             Support
+          </a>
+          <a href="/profile" className="heading">
+            Profile
           </a>
         </nav>
       </div>
