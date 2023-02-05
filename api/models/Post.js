@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// define user schema
 const PostSchema = new mongoose.Schema(
   {
     title: {
@@ -8,7 +7,7 @@ const PostSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    description: {
+    desc: {
       type: String,
       required: true,
     },
