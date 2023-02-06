@@ -12,10 +12,9 @@ export default function Hero() {
         />
         {/* hero text */}
         <div className="hero-text">
-          <span className="hero-title heading">Guide to minimalism</span>
-          <a className="hero-link" href="https://google.com">
-            Read blog
-          </a>
+          <span className="hero-title heading">
+            Home of writers & readers alike
+          </span>
         </div>
       </div>
     </div>

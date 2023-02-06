@@ -22,6 +22,7 @@ export default function Settings() {
             className="profile-photo"
             alt="user profile"
           />
+
           {/* form */}
           <form className="profile-form">
             {/* file input form group */}

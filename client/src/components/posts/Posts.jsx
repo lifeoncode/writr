@@ -7,6 +7,7 @@ export default function Posts({ posts }) {
     <div className="posts container">
       {posts.map((post) => (
         <Post
+          image={post.photo}
           title={post.title}
           paragraph={post.desc}
           author={post.username}

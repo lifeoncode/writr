@@ -1,17 +1,54 @@
+import { useState, useContext } from "react";
+import axios from "axios";
 import "./write.css";
+import { Context } from "../../context/Context";
 
 export default function Write() {
+  const [title] = useState("");
+  const [desc] = useState("");
+  const [file] = useState(null);
+  const { user } = useContext(Context);
+
+  const handlePublish = async (e) => {
+    e.preventDefault();
+    const newPost = {
+      username: user.username,
+      title,
+      desc,
+    };
+
+    if (file) {
+      const data = new FormData();
+      const filename = Date.now() + file.name;
+      data.append("name", filename);
+      data.append("file", file);
+      newPost.photo = filename;
+      try {
+        await axios.post("/upload", data);
+      } catch (err) {
+        console.log("error occured while uploading file:", err);
+      }
+    }
+
+    try {
+      const response = await axios.post("/posts", newPost);
+      window.location.replace(`/post/${response.data._id}`);
+    } catch (err) {}
+  };
+
   return (
     <div className="write">
       <div className="container">
         {/* cover image display */}
-        <img
-          src="https://static.wixstatic.com/media/4a5235_3bf6bba1c49841929c83de687a260604~mv2.jpg/v1/fill/w_640,h_412,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/4a5235_3bf6bba1c49841929c83de687a260604~mv2.jpg"
-          alt="post cover"
-          className="write-image"
-        />
+        {file && (
+          <img
+            src={URL.createObjectURL(file)}
+            alt="post cover"
+            className="write-image"
+          />
+        )}
         {/* form */}
-        <form className="write-form">
+        <form className="write-form" onSubmit={handlePublish}>
           {/* title and cover image form group */}
           <div className="form-group">
             <label htmlFor="file-input">

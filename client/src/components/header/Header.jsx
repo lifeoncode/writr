@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 import "./header.css";
 
 export default function Header() {
-  const user = false;
+  const { user, dispatch } = useContext(Context);
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
 
   return (
     <header className="header">
@@ -11,9 +16,13 @@ export default function Header() {
         <nav className="nav">
           <Link to="/write">Write</Link>
           <Link to="/">Feed</Link>
-          <Link to="/support">Support</Link>
           {user ? (
-            <Link to="/settings">Profile</Link>
+            <>
+              <Link to="/settings">Profile</Link>
+              <span className="logout-btn" onClick={handleLogout}>
+                logout
+              </span>
+            </>
           ) : (
             <>
               <Link to="/login">Login</Link>

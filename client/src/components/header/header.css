@@ -37,3 +37,17 @@
 .nav a:hover {
   color: var(--black);
 }
+
+.logout-btn {
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  font-weight: 400px;
+  text-decoration: none;
+  color: var(--dark-gray);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  color: var(--black);
+}

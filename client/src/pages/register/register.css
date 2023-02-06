@@ -59,3 +59,9 @@ span {
 span a {
   color: blue;
 }
+
+span.error-message {
+  color: orangered;
+  display: block;
+  margin: 10px 0;
+}
