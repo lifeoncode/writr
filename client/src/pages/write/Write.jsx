@@ -4,9 +4,9 @@ import "./write.css";
 import { Context } from "../../context/Context";
 
 export default function Write() {
-  const [title] = useState("");
-  const [desc] = useState("");
-  const [file] = useState(null);
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [file, setFile] = useState(null);
   const { user } = useContext(Context);
 
   const handlePublish = async (e) => {
@@ -53,9 +53,14 @@ export default function Write() {
           <div className="form-group">
             <label htmlFor="file-input">
               <i className="fa-solid fa-plus"></i>
-              <i class="fa-solid fa-image"></i>
+              <i className="fa-solid fa-image"></i>
             </label>
-            <input type="file" id="file-input" hidden />
+            <input
+              type="file"
+              id="file-input"
+              hidden
+              onChange={(e) => setFile(e.target.files[0])}
+            />
             <input
               type="text"
               id="write-title"
@@ -63,6 +68,7 @@ export default function Write() {
               placeholder="Title"
               autoFocus
               required
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           {/* text - post content form group */}
@@ -72,6 +78,7 @@ export default function Write() {
               placeholder="Tell your story..."
               className="write-input write-content"
               required
+              onChange={(e) => setDesc(e.target.value)}
             ></textarea>
           </div>
           {/* submit button */}

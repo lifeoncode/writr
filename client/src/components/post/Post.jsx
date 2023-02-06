@@ -1,5 +1,6 @@
 import "./post.css";
 import { Link } from "react-router-dom";
+import path from "path";
 
 export default function Post({
   image,
@@ -9,6 +10,7 @@ export default function Post({
   paragraph,
   postID,
 }) {
+  console.log(path.join(__dirname, "images"));
   return (
     <div className="post">
       <img className="post-image" src={image} alt="article cover" />
