@@ -1,6 +1,14 @@
 import "./post.css";
+import { Link } from "react-router-dom";
 
-export default function Post({ image, author, time, title, paragraph, link }) {
+export default function Post({
+  image,
+  author,
+  time,
+  title,
+  paragraph,
+  postID,
+}) {
   return (
     <div className="post">
       <img className="post-image" src={image} alt="article cover" />
@@ -11,9 +19,9 @@ export default function Post({ image, author, time, title, paragraph, link }) {
           {title}
         </h3>
         <p className="post-paragraph">{paragraph}</p>
-        <a href={link} className="post-link">
+        <Link className="post-link" to={`/post/${postID}`}>
           Read
-        </a>
+        </Link>
       </div>
     </div>
   );

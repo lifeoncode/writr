@@ -1,21 +1,37 @@
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./singlepost.css";
+import axios from "axios";
 
 export default function SinglePost() {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    const getPost = async () => {
+      const response = await axios.get(`/posts/${id}`);
+      setPost(response.data);
+    };
+
+    getPost();
+  }, [id]);
+
   return (
     <div className="single-post">
       <div className="container">
         {/* post cover image */}
-        <img
-          className="cover-image"
-          src={require("../../assets/post-image.jpg")}
-          alt="post cover"
-        />
+        {post.photo && (
+          <img className="cover-image" src={post.photo} alt="post cover" />
+        )}
         {/* post head contains post controls and time */}
         <div className="post-head">
           {/* post time */}
           <div className="post-info">
-            <span className="post-author">Tim Bakers</span>
-            <span className="post-time">22 october 2022</span>
+            <span className="post-author">Author: {post.username}</span>
+            <span className="post-time">
+              {new Date(post.updatedAt).toDateString()}
+            </span>
           </div>
           {/* controls - edit - delete */}
           <div className="post-controls">
@@ -25,13 +41,8 @@ export default function SinglePost() {
         </div>
         {/* post content */}
         <div className="post-content">
-          <h3 className="post-title heading">The only brew you need</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
-            vitae. Quam magni sint quis obcaecati tempora perspiciatis
-            praesentium ab repellat est corrupti harum facilis illum, fuga
-            magnam ullam similique expedita? Dicta, consequuntur animi!
-          </p>
+          <h3 className="post-title heading">{post.title}</h3>
+          <p>{post.desc}</p>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ function App() {
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/write" element={user ? <Write /> : <Login />} />
         <Route path="/settings" element={user ? <Settings /> : <Login />} />
-        <Route path="/post" element={<Single />} />
+        <Route path="/post/:id" element={<Single />} />
       </Routes>
     </Router>
   );
