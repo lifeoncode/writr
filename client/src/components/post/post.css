@@ -6,19 +6,27 @@
   padding: 15px;
 }
 
+.post .post-author {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: var(--dark-gray);
+}
+
 .post .post-time {
   font-weight: 400;
-  opacity: 0.5;
-  letter-spacing: 4px;
+  opacity: 0.8;
+  letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 10px;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .post .post-title {
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -28,7 +36,7 @@
 
 .post .post-paragraph {
   opacity: 0.8;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

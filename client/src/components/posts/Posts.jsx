@@ -1,16 +1,17 @@
 import "./posts.css";
 import Post from "../post/Post";
 
-export default function Posts() {
+export default function Posts({ posts }) {
   return (
     <div className="posts container">
-      <Post />
-      <Post />
-      <Post title="This is the next one in the line of more than 60 years" />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      {posts.map((post) => (
+        <Post
+          title={post.title}
+          paragraph={post.desc}
+          author={post.username}
+          time={post.updatedAt}
+        />
+      ))}
     </div>
   );
 }
