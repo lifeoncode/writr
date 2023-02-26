@@ -2,7 +2,7 @@ import Header from "../components/header/Header";
 import Hero from "../components/hero/Hero";
 import Post from "../components/post/Post";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="home">
       <Header />
