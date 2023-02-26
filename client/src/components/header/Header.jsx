@@ -1,18 +1,19 @@
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     // the header contains navigation logo & links
-    <>
-      <header className="header">
-        <div className="container">
-          <span className="logo">writr.</span>
-          <nav>
-            <a href="/login">Login</a>
-            <a href="/register">Sign up</a>
-          </nav>
-        </div>
-      </header>
-    </>
+    <header className="header">
+      <div className="container">
+        <Link to="/" className="logo">
+          writr.
+        </Link>
+        <nav>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Sign up</Link>
+        </nav>
+      </div>
+    </header>
   );
 }

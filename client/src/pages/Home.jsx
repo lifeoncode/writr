@@ -1,11 +1,10 @@
-import "./Home.css";
-import Header from "../header/Header";
-import Hero from "../hero/Hero";
-import Post from "../post/Post";
+import Header from "../components/header/Header";
+import Hero from "../components/hero/Hero";
+import Post from "../components/post/Post";
 
 export default function Home() {
   return (
-    <main role="main">
+    <div className="home">
       <Header />
       <Hero />
       {/* all posts */}
@@ -29,6 +28,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
