@@ -8,6 +8,14 @@
   font-family: "Roboto", sans-serif;
 }
 
+::-webkit-scrollbar {
+  background-color: inherit;
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #dededf;
+}
+
 body {
   background-color: #fafafa;
 }

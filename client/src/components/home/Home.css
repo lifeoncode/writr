@@ -88,33 +88,4 @@ img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.header {
-  background-color: #f0f0f0;
-  position: sticky;
-  z-index: 2;
-  top: 0;
-  width: 100%;
-  padding: 15px 0;
-}
-.header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-.header nav a {
-  text-transform: uppercase;
-  font-size: 14px;
-  color: #505862;
-  margin-right: 40px;
-  transition: all 0.3s ease;
-}
-.header nav a:last-child {
-  margin: 0;
-}
-.header nav a:hover {
-  color: #141414;
-}/*# sourceMappingURL=Header.css.map */
+}/*# sourceMappingURL=Home.css.map */

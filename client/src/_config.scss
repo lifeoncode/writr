@@ -36,6 +36,15 @@ $light-blue: rgb(55, 108, 253);
   grid-gap: $gap;
 }
 
+::-webkit-scrollbar {
+  background-color: inherit;
+  width: 4px;
+
+  &-thumb {
+    background-color: $light-gray;
+  }
+}
+
 // body
 body {
   background-color: $white;
