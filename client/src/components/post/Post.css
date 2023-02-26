@@ -82,36 +82,34 @@ img {
      object-fit: cover;
 }
 
-.hero {
-  padding: 20px 0;
-}
-.hero .container {
-  height: 400px;
-  overflow: hidden;
-  position: relative;
+.post {
+  margin-bottom: 20px;
   cursor: pointer;
-}
-.hero .container:hover .text {
-  opacity: 1;
-}
-.hero .container img {
-  height: 100%;
-}
-.hero .container .text {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  padding: 20px 40px;
-  opacity: 0.7;
   transition: all 0.5s ease;
 }
-.hero .container .text .heading {
-  font-size: 24px;
+.post:hover {
+  opacity: 0.8;
+}
+.post .text {
+  padding: 10px 15px;
+}
+.post .text .heading {
   font-weight: bold;
-  display: block;
+  font-size: 20px;
   margin-bottom: 10px;
 }
-.hero .container .text .time {
-  font-size: 14px;
-  text-transform: uppercase;
-}/*# sourceMappingURL=Hero.css.map */
+.post .text p {
+  font-size: 15px;
+  line-height: 1.45;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  margin-bottom: 20px;
+}
+.post .text .line {
+  width: 50%;
+  height: 1px;
+  background-color: #141414;
+}/*# sourceMappingURL=Post.css.map */

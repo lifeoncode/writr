@@ -1,1 +1,14 @@
 @import "./config";
+
+// posts
+
+.posts {
+  .container {
+    @include grid-display(repeat(3, 1fr), 0px);
+
+    .column-b {
+      border-left: 1px solid $black;
+      border-right: 1px solid $black;
+    }
+  }
+}

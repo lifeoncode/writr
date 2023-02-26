@@ -3,6 +3,7 @@
 .header {
   background-color: $very-light-gray;
   position: sticky;
+  z-index: 2;
   top: 0;
   width: 100%;
   padding: 15px 0;
