@@ -80,4 +80,38 @@ img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-}/*# sourceMappingURL=App.css.map */
+}
+
+.hero {
+  padding: 50px 0;
+}
+.hero .container {
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.hero .container:hover .text {
+  opacity: 1;
+}
+.hero .container img {
+  height: 100%;
+}
+.hero .container .text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  opacity: 0.7;
+  transition: all 0.5s ease;
+}
+.hero .container .text .heading {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+.hero .container .text .time {
+  font-size: 14px;
+  text-transform: uppercase;
+}/*# sourceMappingURL=Hero.css.map */

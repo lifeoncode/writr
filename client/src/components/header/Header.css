@@ -75,6 +75,13 @@ a span {
   font: inherit;
 }
 
+img {
+  display: block;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .header {
   background-color: #f0f0f0;
   position: sticky;
