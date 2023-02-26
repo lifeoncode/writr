@@ -22,7 +22,7 @@ export default function Register() {
   return (
     <div className="register container">
       <h1>Create your writr account.</h1>
-      <form onChange={handleRegister}>
+      <form onSubmit={handleRegister}>
         <input
           type="text"
           name="username"
