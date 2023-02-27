@@ -26,7 +26,22 @@
       display: -webkit-box;
       -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
-      margin-bottom: 20px;
+    }
+
+    .info {
+      font-size: 14px;
+      color: $gray;
+      opacity: 0.5;
+      margin: 15px 0 20px 0;
+
+      .fas {
+        font-size: 12px;
+      }
+
+      .time {
+        display: inline-block;
+        margin-left: 10px;
+      }
     }
 
     .line {

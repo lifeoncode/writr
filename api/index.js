@@ -9,6 +9,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
+const User = require("./models/User");
 
 dotenv.config();
 app.use(express.json());
@@ -27,24 +28,23 @@ mongoose
     console.log("AN ERROR OCCURED WHILE CONNECTING TO DB:\n", err)
   );
 
+// register
+app.post("/register", async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    const newUser = await User.create({ username, email, password });
+    res.status(200).json(newUser);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: "error occured" });
+  }
+});
+
 // login
 app.post("/login", (req, res) => {
   try {
     const { email, password } = req.body;
     const user = { email, password };
-    console.log(user);
-    res.status(200).json(user);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error });
-  }
-});
-
-// register
-app.post("/register", (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-    const user = { username, email, password };
     console.log(user);
     res.status(200).json(user);
   } catch (error) {

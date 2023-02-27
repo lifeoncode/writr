@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Register.css";
 
 export default function Register() {
@@ -10,13 +11,17 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     const user = { username, email, password };
-    const response = await fetch("http://localhost:5000/register", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    });
-    const responseData = await response.json();
-    console.log(responseData);
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
+      const responseData = await response.json();
+      console.log(responseData);
+    } catch (error) {
+      alert("Could not register new user");
+    }
   };
 
   return (
@@ -49,6 +54,9 @@ export default function Register() {
         />
         <button type="submit">sign up</button>
       </form>
+      <p>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
     </div>
   );
 }

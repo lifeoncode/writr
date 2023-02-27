@@ -83,6 +83,12 @@ a span {
   font: inherit;
 }
 
+.time {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 img {
   display: block;
   width: 100%;
@@ -114,7 +120,19 @@ img {
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
-  margin-bottom: 20px;
+}
+.post .text .info {
+  font-size: 14px;
+  color: #505862;
+  opacity: 0.5;
+  margin: 15px 0 20px 0;
+}
+.post .text .info .fas {
+  font-size: 12px;
+}
+.post .text .info .time {
+  display: inline-block;
+  margin-left: 10px;
 }
 .post .text .line {
   width: 50%;

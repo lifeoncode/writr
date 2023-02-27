@@ -39,10 +39,10 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">login</button>
-        <p>
-          Don't have an account? <Link to="/register">Create one</Link>
-        </p>
       </form>
+      <p>
+        Don't have an account? <Link to="/register">Create one</Link>
+      </p>
     </div>
   );
 }
