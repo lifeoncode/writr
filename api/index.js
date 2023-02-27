@@ -10,6 +10,8 @@ const path = require("path");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const User = require("./models/User");
+const bcrypt = require("bcrypt");
+const salt = bcrypt.genSaltSync(10);
 
 dotenv.config();
 app.use(express.json());
@@ -32,7 +34,11 @@ mongoose
 app.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const newUser = await User.create({ username, email, password });
+    const newUser = await User.create({
+      username,
+      email,
+      password: bcrypt.hashSync(password, salt),
+    });
     res.status(200).json(newUser);
   } catch (error) {
     console.log(error);
@@ -41,15 +47,15 @@ app.post("/register", async (req, res) => {
 });
 
 // login
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = { email, password };
-    console.log(user);
-    res.status(200).json(user);
+    const dbUser = await User.findOne({ email });
+    const passwordOk = bcrypt.compareSync(password, dbUser.password);
+    res.status(200).json({ authentication: passwordOk });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error });
+    res.status(400).json({ message: "error occured" });
   }
 });
 

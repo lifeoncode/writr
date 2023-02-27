@@ -11,16 +11,17 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     const user = { username, email, password };
-    try {
-      const response = await fetch("http://localhost:5000/register", {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      });
+    const response = await fetch("http://localhost:5000/register", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    });
+    // ensure status code 200 from server response
+    if (response.status !== 200) {
+      alert("ERROR: Could not register new user.");
+    } else {
       const responseData = await response.json();
       console.log(responseData);
-    } catch (error) {
-      alert("Could not register new user");
     }
   };
 

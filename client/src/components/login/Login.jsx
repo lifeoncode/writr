@@ -17,6 +17,12 @@ export default function Login() {
     });
     const responseData = await response.json();
     console.log(responseData);
+    // ensure status code 200 from server response
+    if (response.status !== 200) {
+      alert("ERROR: Could not login");
+    } else if (!responseData.authentication) {
+      alert("ERROR: Wrong password");
+    }
   };
 
   return (
