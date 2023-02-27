@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./Register.css";
 
 export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   // handle register function
   const handleRegister = async (e) => {
@@ -16,18 +17,24 @@ export default function Register() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
+    const responseData = await response.json();
+    console.log(responseData);
     // ensure status code 200 from server response
     if (response.status !== 200) {
       alert("ERROR: Could not register new user.");
     } else {
-      const responseData = await response.json();
-      console.log(responseData);
+      setRedirect(true);
     }
   };
 
+  // if redirecting
+  if (redirect) {
+    return <Navigate to={"/login"} />;
+  }
+
   return (
     <div className="register container">
-      <h1>Create your writr account.</h1>
+      <h1 className="heading">Create your writr account.</h1>
       <form onSubmit={handleRegister}>
         <input
           type="text"
@@ -43,7 +50,6 @@ export default function Register() {
           name="email"
           placeholder="Email"
           required
-          autoFocus
           onChange={(e) => setEmail(e.target.value)}
         />
         <input

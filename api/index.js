@@ -12,10 +12,13 @@ const PORT = process.env.PORT || 5000;
 const User = require("./models/User");
 const bcrypt = require("bcrypt");
 const salt = bcrypt.genSaltSync(10);
+const jwt = require("jsonwebtoken");
+const jwtSecret =
+  "kcjdbivoewjphcbidshbguhgvkcuyshbvisehvloewiviljbfkjnvlfsjbvifsjbvkfsjbvk";
 
 dotenv.config();
 app.use(express.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
@@ -52,7 +55,21 @@ app.post("/login", async (req, res) => {
     const { email, password } = req.body;
     const dbUser = await User.findOne({ email });
     const passwordOk = bcrypt.compareSync(password, dbUser.password);
-    res.status(200).json({ authentication: passwordOk });
+    // if passwords don't match - 400
+    if (!passwordOk) {
+      res.status(400).json({ message: "wrong credentials" });
+    } else {
+      // otherwise - login
+      jwt.sign(
+        { username: dbUser.username, id: dbUser._id },
+        jwtSecret,
+        {},
+        (error, token) => {
+          if (error) throw error;
+          res.status(200).cookie("writr-user-token", token).json("ok");
+        }
+      );
+    }
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: "error occured" });
