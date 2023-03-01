@@ -12,15 +12,17 @@ const PORT = process.env.PORT || 5000;
 const User = require("./models/User");
 const bcrypt = require("bcrypt");
 const salt = bcrypt.genSaltSync(10);
-const jwt = require("jsonwebtoken");
-const jwtSecret =
-  "kcjdbivoewjphcbidshbguhgvkcuyshbvisehvloewiviljbfkjnvlfsjbvifsjbvkfsjbvk";
+const bodyParser = require("body-parser");
 
-dotenv.config();
+// middleware
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "/images")));
+dotenv.config();
 
+// connect DB
 mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
@@ -28,11 +30,10 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: true,
   })
-  .then(console.log(">>>> MONGO_DB CONNECTION ESTABLISHED <<<<"))
-  .catch((err) =>
-    console.log("AN ERROR OCCURED WHILE CONNECTING TO DB:\n", err)
-  );
+  .then(console.log(">>>> DB CONNECTION ESTABLISHED <<<<"))
+  .catch((err) => console.log("COULD NOT CONNECT TO: DB\n", err));
 
+// ENDPOINTS
 // register
 app.post("/register", async (req, res) => {
   try {
@@ -55,20 +56,12 @@ app.post("/login", async (req, res) => {
     const { email, password } = req.body;
     const dbUser = await User.findOne({ email });
     const passwordOk = bcrypt.compareSync(password, dbUser.password);
-    // if passwords don't match - 400
-    if (!passwordOk) {
-      res.status(400).json({ message: "wrong credentials" });
+    // if passwords match - login
+    if (passwordOk) {
+      res.status(200).json(dbUser);
     } else {
-      // otherwise - login
-      jwt.sign(
-        { username: dbUser.username, id: dbUser._id },
-        jwtSecret,
-        {},
-        (error, token) => {
-          if (error) throw error;
-          res.status(200).cookie("writr-user-token", token).json("ok");
-        }
-      );
+      // otherwise - login error
+      res.status(400).json({ message: "wrong credentials" });
     }
   } catch (error) {
     console.log(error);
