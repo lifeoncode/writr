@@ -1,9 +1,10 @@
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function Header() {
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("writr-user"));
     if (currentUser === undefined || currentUser === null) {
@@ -13,6 +14,12 @@ export default function Header() {
       setUser(currentUser);
     }
   }, []);
+
+  // logout function
+  const handleLogout = () => {
+    localStorage.removeItem("writr-user");
+    window.location.replace("/");
+  };
 
   return (
     // the header contains navigation logo & links
@@ -26,6 +33,9 @@ export default function Header() {
             <>
               <Link to={"/write"}>write</Link>
               <Link to={"/profile"}>profile</Link>
+              <button className="logout-link" onClick={handleLogout}>
+                logout
+              </button>
             </>
           )}
           {!user && (

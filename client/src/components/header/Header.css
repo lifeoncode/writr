@@ -75,11 +75,11 @@ p span {
   font: inherit;
 }
 
-a {
+a, .header nav .logout-link {
   display: inline-block;
   text-decoration: none;
 }
-a span {
+a span, .header nav .logout-link span {
   font: inherit;
 }
 
@@ -111,16 +111,22 @@ img {
   flex-wrap: wrap;
   flex-direction: row;
 }
-.header nav a {
+.header nav a, .header nav .logout-link {
   text-transform: uppercase;
   font-size: 14px;
   color: #505862;
   margin-right: 40px;
   transition: all 0.3s ease;
 }
-.header nav a:last-child {
+.header nav a:last-child, .header nav .logout-link:last-child {
   margin: 0;
 }
-.header nav a:hover {
+.header nav a:hover, .header nav .logout-link:hover {
   color: #141414;
+}
+.header nav .logout-link {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  outline: none;
 }/*# sourceMappingURL=Header.css.map */

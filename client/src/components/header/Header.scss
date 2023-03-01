@@ -28,5 +28,13 @@
         color: $black;
       }
     }
+
+    .logout-link {
+      @extend a;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      outline: none;
+    }
   }
 }
