@@ -15,14 +15,14 @@ export default function Login() {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
-      credentials: "include",
     });
-    const responseData = await response.json();
-    console.log(responseData);
+    const loggedUser = await response.json();
+    console.log(loggedUser);
     // ensure status code 200 from server response
     if (response.status !== 200) {
       alert("ERROR: wrong credentials");
     } else {
+      localStorage.setItem("writr-user", JSON.stringify(loggedUser));
       setRedirect(true);
     }
   };
