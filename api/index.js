@@ -5,14 +5,17 @@ const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
-const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const User = require("./models/User");
+const Post = require("./models/Post");
 const bcrypt = require("bcrypt");
 const salt = bcrypt.genSaltSync(10);
 const bodyParser = require("body-parser");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+const fs = require("fs");
 
 // middleware
 app.use(express.json());
@@ -69,24 +72,33 @@ app.post("/login", async (req, res) => {
   }
 });
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, req.body.name);
-  },
+// posts
+app.post("/posts", upload.single("file"), async (req, res) => {
+  try {
+    // image file processing
+    const { originalname, path } = req.file;
+    const originalnameArr = originalname.split(".");
+    const ext = originalnameArr[originalnameArr.length - 1];
+    const newPath = `${path}.${ext}`;
+    fs.renameSync(path, newPath);
+
+    // persist to DB
+    const { title, content, username } = req.body;
+    const newDbPost = await Post.create({
+      title,
+      content,
+      cover: newPath,
+      username,
+    });
+
+    res.status(200).json(newDbPost);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "error occured" });
+  }
 });
 
-const upload = multer({ storage: storage });
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  res.status(200).json("File has been uploaded");
-});
-
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
-app.use("/api/posts", postRoute);
-
+// run server
 app.listen(PORT, () => {
   console.log("SERVER RUNNING...\n");
 });
