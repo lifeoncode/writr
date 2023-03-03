@@ -1,0 +1,80 @@
+@import "../../config";
+
+.write {
+  padding: 50px 0;
+
+  .container {
+    position: relative;
+    width: 700px;
+
+    @media only screen and (max-width: 715px) {
+      padding: 0 15px;
+    }
+  }
+
+  form {
+    input,
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      outline: none;
+      background-color: transparent;
+      border: 0;
+    }
+
+    label {
+      display: inline-block;
+      font-size: 22px;
+      opacity: 0.6;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      text-transform: uppercase;
+
+      span {
+        font-size: 16px;
+        margin-left: 10px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    input {
+      &.hidden {
+        display: none;
+      }
+    }
+
+    .title-input {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    textarea {
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .publish-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: inline-block;
+      background-color: $blue;
+      color: $white;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.5s ease;
+    }
+  }
+}
